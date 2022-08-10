@@ -14,12 +14,12 @@ rust {
     cargoInstallTargets.set(true)
 
     // Adding a simple target with default options
-    targets += target("i686-unknown-linux-gnu", "libtest.so")
+    // targets += target("i686-unknown-linux-gnu", "libtest.so")
 
     // Adding a target with modfified options
-    targets += target("i686-pc-windows-gnu", "test.dll").apply {
-        release = false
-    }
+    // targets += target("i686-pc-windows-gnu", "test.dll").apply {
+    //     release = false
+    // }
 
     // Defining per-targets
     targets {
@@ -27,29 +27,29 @@ rust {
         this += defaultTarget()
 
         // Creates a named target with a custom file output
-        create("win64") {
-            target = "x86_64-pc-windows-gnu"
-            outputName = "test64.dll"
-        }
+        // create("win64") {
+        //    target = "x86_64-pc-windows-gnu"
+        //    outputName = "test64.dll"
+        // }
 
         // Custom target with different params than default
-        create("macOS-x86") {
-            target = "x86_64-apple-darwin"
-            outputName = "libtest64.dylib"
+        // create("macOS-x86") {
+        //     target = "x86_64-apple-darwin"
+        //     outputName = "libtest64.dylib"
 
             // Use other command for this target
-            command = "cargo"
-            env += "CC" to "o64-clang"
-            env += "CXX" to "o64-clang++"
-        }
+        //     command = "cargo"
+        //     env += "CC" to "o64-clang"
+        //     env += "CXX" to "o64-clang++"
+        // }
 
-        create("macOS-aarch64") {
-            target = "aarch64-apple-darwin"
-            outputName = "libtest64.dylib"
+        // create("macOS-aarch64") {
+        //     target = "aarch64-apple-darwin"
+        //     outputName = "libtest64.dylib"
 
-            command = "cargo"
-            env += "CC" to "oa64-clang"
-            env += "CXX" to "oa64-clang++"
-        }
+        //     command = "cargo"
+        //     env += "CC" to "oa64-clang"
+        //     env += "CXX" to "oa64-clang++"
+        // }
     }
 }
